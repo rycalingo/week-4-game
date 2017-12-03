@@ -60,28 +60,29 @@ label, textarea, textarea {
 }
 section {
 	padding: 10px 0 15px;
-	margin: 10px auto 10px;
+	margin: 0 auto 10px;
 }
-#attack_btn {
+#attack_btn, #restart_btn {
 	width: 100px;
-	padding: 15px;
+	padding: 10px 20px;
 	margin: 20px 0;
 	background: #bfbfbf;
 	display: inline;
 	cursor: pointer;
 }
-#attack_btn p {
+#attack_btn {
 	text-align: center;
 }
-#champions {
+#champions, #fighters, #challenger {
 	display: inline-flex;
 }
-#champions > .character {
+.character {
 	padding: 3px 12px;
 	text-align: center;
 	border: 1px solid #2830ff;
+	cursor: pointer;
 }
-#champions > .character img {
+.character img {
 	width: 150px;
 	height: 100px;
 	display: block;
