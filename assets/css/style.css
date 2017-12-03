@@ -56,13 +56,14 @@ body { background: url('../../assets/img/throne_room.jpg') no-repeat; }
 	/*border: 1px solid #000000;*/
 	background-color: rgba(255,255,255, 0.4);
 }
-#hud {
+.game_title { text-align: center; }
+/*#hud {
 	height: 40px;
 	text-align: center;
 	margin-top: 20px;
 	margin-bottom: 20px;
 	border-bottom: 1px solid #000000;
-}
+}*/
 section {
 	padding: 10px 0 15px;
 	margin: 0 auto 10px;
