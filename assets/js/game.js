@@ -27,7 +27,9 @@ var game_rpg = {
 
 			game_rpg.$champion.addClass("champion");
 
-			game_rpg.userShownHP = game_rpg.$champion.find("hp");
+			game_rpg.userHP = game_rpg.$champion.find(".hp");
+			game_rpg.userHP_val = game_rpg.$champion.find(".hp").text();
+
 			game_rpg.userATK = game_rpg.$champion.data("atk");
 
 			game_rpg.$charFighter.addClass("fighter");
@@ -47,8 +49,10 @@ var game_rpg = {
 
 			game_rpg.$challenger.addClass("challenger");
 
-			game_rpg.challShownHP = game_rpg.$challenger.find("hp");
-			game_rpg.challDEF = game_rpg.$challenger.data("def");
+			game_rpg.challHP = game_rpg.$challenger.find(".hp");
+			game_rpg.challHP_val = game_rpg.$challenger.find(".hp").text();
+
+			game_rpg.challATK = game_rpg.$challenger.data("def");
 
 			game_rpg.$challenger_set.html(game_rpg.$challenger);
 			
@@ -58,20 +62,32 @@ var game_rpg = {
 		});
 	},
 	attack: function() {
-
-		game_rpg.$attack_btn.on("click", function() {
+		game_rpg.user_atk = 0;
 			
-			game_rpg.userHP = game_rpg.$champion.data("hp");
-			game_rpg.challHP=- game_rpg.userATK;
+		game_rpg.$attack_btn.on("click", function() {
 
-			game_rpg.challHP = game_rpg.$challenger.data("hp");
-			game_rpg.userHP=- game_rpg.challATK;
+			game_rpg.user_atk = game_rpg.user_atk + game_rpg.userATK;
 
-console.log(game_rpg.challHP);
+			game_rpg.challHP_val = game_rpg.challHP_val - game_rpg.user_atk;
+			game_rpg.userHP_val = game_rpg.userHP_val - game_rpg.challATK;
 
-			game_rpg.userShownHP.text(game_rpg.userHP);
-			game_rpg.challShownHP.text(game_rpg.challHP);
 
+			game_rpg.challHP.text(game_rpg.challHP_val);
+			game_rpg.userHP.text(game_rpg.userHP_val);
+
+			if ( game_rpg.challHP_val <= 0 ) {
+				game_rpg.$challenger.addClass("HIDE");
+				game_rpg.$challenger.removeClass("challenger");
+
+				game_rpg.$attack_btn.unbind();
+	
+				game_rpg.pickChallenger();
+
+			}else if ( game_rpg.userHP_val <= 0 ) {
+				game_rpg.$restart_btn.removeClass("HIDE");
+				
+				game_rpg.$attack_btn.unbind();
+			}
 
 		});
 	},

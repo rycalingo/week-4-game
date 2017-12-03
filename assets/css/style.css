@@ -80,8 +80,8 @@ section {
 	font-size: 11px;
 	text-align: center;
 }
-#restart_btn.HIDE {
-	display: none;
+*.HIDE {
+	display: none !important;
 }
 #champions, #fighters, #challenger {
 	display: inline-flex;
