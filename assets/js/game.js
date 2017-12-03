@@ -87,6 +87,8 @@ var game_rpg = {
 				game_rpg.$restart_btn.removeClass("HIDE");
 				
 				game_rpg.$attack_btn.unbind();
+
+				game_rpg.restart();
 			}
 
 		});
@@ -98,13 +100,13 @@ var game_rpg = {
 
 			game_rpg.$restart_btn.addClass("HIDE");
 			
-			game_rpg.$champion_set.html(game_rpg.$game.find("#champions"));
+			var char = game_rpg.$game.find(".character");
 
-			game_rpg.userHP = "";
-			game_rpg.userATK = "";
+			char.removeClass("champion");
+			char.removeClass("fighter");
+			char.removeClass("challenger");
 
-			game_rpg.challHP = "";		
-			game_rpg.challATK = "";
+			game_rpg.$champion_set.html(char);
 
 			game_rpg.$restart_btn.unbind();
 
