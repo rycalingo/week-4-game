@@ -86,6 +86,7 @@ var game_rpg = {
 			}else if ( game_rpg.userHP_val <= 0 ) {
 				game_rpg.$restart_btn.removeClass("HIDE");
 				
+				game_rpg.userHP.text(0);
 				game_rpg.$attack_btn.unbind();
 
 				game_rpg.restart();
@@ -100,14 +101,19 @@ var game_rpg = {
 
 			game_rpg.$restart_btn.addClass("HIDE");
 			
-			var char = game_rpg.$game.find(".character");
+			for(var i = 0; i < game_rpg.$character_set.length; i++) {
 
-			char.removeClass("champion");
-			char.removeClass("fighter");
-			char.removeClass("challenger");
+				var char = game_rpg.$character_set.eq(i);
+				var hp = char.data("hp");
+				char.find(".hp").text(hp);
 
-			game_rpg.$champion_set.html(char);
+				char.removeClass("champion");
+				char.removeClass("fighter");
+				char.removeClass("challenger");
+				char.removeClass("HIDE");
 
+				game_rpg.$champion_set.append(char);
+			};
 			game_rpg.$restart_btn.unbind();
 
 			game_rpg.initGame();
